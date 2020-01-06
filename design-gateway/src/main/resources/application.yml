@@ -1,0 +1,22 @@
+
+spring:
+  application:
+    name: design-gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: design-config
+    profiles:
+      active: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8005/eureka/
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 60

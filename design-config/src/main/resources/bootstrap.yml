@@ -1,0 +1,16 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: design-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/majuanjuan/design.git
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+  instance:
+    prefer-ip-address: true
