@@ -1,16 +1,21 @@
 server:
   port: 8091
 spring:
-  application:
-    name: design-config
   cloud:
     config:
       server:
-        git:
-          uri: https://gitee.com/majuanjuan/design.git
+        native:
+          search-locations: classpath:/config/ # 搜索src/main/resource 下的config文件夹下的文件
+  application:
+    name: design-config
+  profiles:
+    active: native
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://discovery:8001/eureka/
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 60

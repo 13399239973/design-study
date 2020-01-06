@@ -1,8 +1,7 @@
 server:
-   port: 8082
+  port: 8082
 ---
 spring:
   profiles: dev
   application:
     name: design-auth
-
